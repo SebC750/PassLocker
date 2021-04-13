@@ -32,6 +32,8 @@
 <button> <a href = "#quiz1" onclick = "return loadQuiz();"> Quiz #1</a> </button>
 <button> <a href = "quiz2" > Quiz #2</a> </button>
 </div>
+
+
 <div id = "quiz1">
 	<h1> Quiz #1 </h1>
 </div>
@@ -40,11 +42,15 @@
 
 </script>
 
-
-
+<p id = "show"> </p>
 <div class = "questionDisplay"> 
-
+<h1> {this.question} </h1>
+<input id = "ans1" type = "radio"> {this.answer1} </li>
+<input id = "ans2" type = "radio"> {this.answer2} </li>
+<input id = "ans3" type = "radio"> {this.answer3} </li>
+<input id = "ans4" type = "radio"> {this.answer4} </li>
 </div>
+ 
 
 
 </html>
