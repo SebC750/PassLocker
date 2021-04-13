@@ -1,3 +1,23 @@
+var names = [];
+function add()
+{
+    
+    let insert = document.getElementById('name').value;
+    names.push(insert);
+    console.log(names);
+    return false;
+}
+
+ document.addEventListener('DOMContentLoaded', function()
+        {
+        document.querySelector('#input').onsubmit = function()    
+        {
+            let nameDis = document.getElementById('name').value;
+            document.getElementById('welcome').innerHTML = 
+                    `Hello ${nameDis}!`;
+        return false;
+        }
+});
 var model = 
 {
     "quiz": [
@@ -113,30 +133,11 @@ var model =
      
 
 }
-var names = [];
-function add()
-{
-    
-	let insert = document.getElementById('name').value;
-    names.push(insert);
-    console.log(names);
-    return false;
-}
 
- document.addEventListener('DOMContentLoaded', function()
-        {
-        document.querySelector('#input').onsubmit = function()    
-        {
-        	let nameDis = document.getElementById('name').value;
-        	document.getElementById('welcome').innerHTML = 
-                    `Hello ${nameDis}!`;
-        return false;
-        }
-});
-
+var currentQuestion = this.id;
+var correct = 0;
 function loadQuiz()
 {
-     document.getElementById("questionDisplay").innerHTML = model;
-     console.log(model);
+     document.getElementById("show").innerHTML = `<h2> Question #${this.id} </h2>`;
 }
  
