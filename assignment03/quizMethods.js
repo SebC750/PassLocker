@@ -18,26 +18,26 @@ function add()
         return false;
         }
 });
-var model = 
+var quiz = 
 {
     "quiz": [
     {
-     "id": "1",
-     "question":"Which one of these choices is a primitive type?", 
-     "answer1": "int",
-     "answer2": "String",
-     "answer3": "Array",
-     "answer4": "Class",
-     "correct": "int"
+     id: 1,
+     question:"Which one of these choices is a primitive type?", 
+     answer1: "int",
+     answer2: "String",
+     answer3: "Array",
+     answer4: "Class",
+     correct: "int"
     },
     {
-     "id": "2",
-     "question":"For a printer that is printing material for multiple people in an office, what data structure is best suited for this scenario?", 
-     "answer1": "Stack",
-     "answer2": "Queue",
-     "answer3": "Bucket Sort",
-     "answer4": "ArrayList",
-     "correct": "Queue"
+     "id": 2,
+     question":"For a printer that is printing material for multiple people in an office, what data structure is best suited for this scenario?", 
+     answer1: "Stack",
+     answer2: "Queue",
+     answer3: "Bucket Sort",
+     answer4: "ArrayList",
+     correct: "Queue"
     },
     {
      "id": "3",
@@ -136,8 +136,25 @@ var model =
 
 var currentQuestion = this.id;
 var correct = 0;
+if(currentQuestion == quiz.length)
+{
+
+}
 function loadQuiz()
 {
      document.getElementById("show").innerHTML = `<h2> Question #${this.id} </h2>`;
+
 }
- 
+var choice;
+function check() 
+{
+    var compliment;
+    choice = document.getElementsByName("choice");
+    if(this.answer4 == quiz[currentQuestion].correct)
+    {
+      compliment = `<p> Great Job! You got it right! </p>`;
+      correct++;
+    }
+    currentQuestion++;
+    loadQuiz();
+}
