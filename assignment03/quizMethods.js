@@ -148,7 +148,7 @@ function calc()
     {
         finalDisplay = "Had one too many naps in class, eh?"
     }
-    return finalDisplay;
+    return finalDisplay.innerHTML;
 }
 function nextQuestion()
 {
