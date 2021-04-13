@@ -29,7 +29,7 @@
 <p id = "welcome"> </p>
 </div>
 <div id = "quizzes">
-<button> <a href = "#quiz1" onclick = "return begin()"> Quiz #1</a> </button>
+<button> <a href = "#quiz1" onclick = "return nextQuestion();"> Quiz #1</a> </button>
 <button> <a href = "quiz2" > Quiz #2</a> </button>
 </div>
 
@@ -43,16 +43,16 @@
 </script>
 
 
-<div class = "questionDisplay"> 
-  <h2 id = "question"> </h2>
- <input name = "ans1" type = "radio"> </input>
- <input name = "ans2" type = "radio"> </input>
- <input name = "ans3" type = "radio"> </input>
- <input name = "ans4" type = "radio"> </input>
+ <body>
+  <h1 id = "Title" style = " background-color: purple; color: white;"> </h1>
+  <div id = "quest" > </div>  
+  <div id = "score"> </div>
  <button id = "check" onclick = "check();"> Check </button>
-</div>
+ <p id = "message"> </p>
+<p id = "done"> </p>
+<div id = "final"> </div>
+ </body>
  
- <p id = "done"> </p>
 
 
 
