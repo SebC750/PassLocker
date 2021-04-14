@@ -1,6 +1,6 @@
 <DOCTYPE! HTML5>
 <html>
-
+<body style = "background-color: black">
 <head>
 <link rel = "stylesheet" href = "assignment03\indexStyle.css">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,39 +12,34 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script src="assignment03\quizMethods.js"> </script>
   <script src = "https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"> </script>
-	</head>
+	<script id = "display" type = "text/x-handlebars-template"> </script>
+  </head>
 
 	<div class = "jumbotron text-center">
 <h1 style = "font-size: 24px">
 	Math Quiz Directory
 	</h1>	
 </div>
-<p id = "intro"> Welcome to the Math quiz directory. Please input your name and then choose a quiz to begin. </p>
+<p id = "intro" style = "color: white;"> Welcome to the Math quiz directory. Please input your name and then choose a quiz to begin. </p>
 <form id = "input">
-	<label for = "name"> Your name </label>        
+	<label for = "name" style = "color: white;"> Your name </label>        
     <input id = "name" placeholder="Enter your name" autocomplete = "off" autofocus type = "text">
     <input id = "submit" type = "submit">
 	</form>
+
 	<div id = "welcomeMSG">
 <p id = "welcome"> </p>
 </div>
+
 <div id = "quizzes">
 <button> <a href = "#quiz1" onclick = "return nextQuestion();"> Quiz #1</a> </button>
 <button> <a href = "quiz2" > Quiz #2</a> </button>
 </div>
 
 
-<div id = "quiz1">
-	<h1> Quiz #1 </h1>
-</div>
-
-<script id = "display" type = "text/x-handlebars-template">
-
-</script>
-
-
+<button id = "test" onclick = "test();"> Show score </button>
  <body>
-  <h1 id = "Title" style = " background-color: purple; color: white;"> </h1>
+  <h1 id = "Title" style = "color: white;"> </h1>
   <div id = "quest" > </div>  
   <div id = "score"> </div>
  <button id = "check" onclick = "check();"> Check </button>
@@ -52,7 +47,7 @@
 <p id = "done"> </p>
 <div id = "final"> </div>
  </body>
- 
+ </body>
 
 
 
