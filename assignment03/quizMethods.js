@@ -121,9 +121,7 @@ var quiz =
  }
     ];
     
-   
-
-var questions, a, b, c, d, currentQuestion = 0, correct = 0, score, test, ques, ans, finalDisplay;
+var score = 0;  
 function calc()
 {
     finalDisplay = document.getElementById("final");
@@ -150,37 +148,38 @@ function calc()
     }
     return finalDisplay.innerHTML;
 }
+function test()
+{
+     console.log(score);
+}
+var questions, a, b, c, d, currentQuestion = 0, correct = 0, score, test, ques, ans, finalDisplay;
+
 function nextQuestion()
 {
+    document.getElementById('score').innerHTML = "<p style = 'color:white;'> Score: "+score;
     ques = document.getElementById("quest");
 if(currentQuestion >= quiz.length)
 {
    calc();
-   document.getElementById("done").innerHTML = "<p> The quiz is over. You earned a " +score.text+ " out of 100</p>";
+   document.getElementById("done").innerHTML = "<p> The quiz is over. You earned a " +score+ " out of 100</p>";
    return false;
 }
 else
    
-    document.getElementById("Title").innerHTML = "Question #"+(quiz[currentQuestion].id)+" of "+quiz.length;
+    document.getElementById("Title").innerHTML = "<h1 style = 'background-color: purple; padding: 40px; text-align: center;'> Question #"+(quiz[currentQuestion].id)+" of "+quiz.length;
     questions = quiz[currentQuestion].question;
  
  a = " a. "+quiz[currentQuestion].answer1;
  b = " b. "+quiz[currentQuestion].answer2;
  c = " c. "+quiz[currentQuestion].answer3;
  d = " d. "+quiz[currentQuestion].answer4;
- ques.innerHTML = "<h1 style = 'text-align: center;'>" +questions+ "</h1>";
- ques.innerHTML += "<li> <input type='radio' name='select'>" +a+ "</input> </li> ";
- ques.innerHTML += "<li> <input type='radio' name='select'>" +b+ "</input> </li> ";
- ques.innerHTML += "<li> <input type='radio' name='select'>" +c+ "</input> </li> ";
- ques.innerHTML += "<li> <input type='radio' name='select'>" +d+ "</input> </li> ";
+ ques.innerHTML = "<h1 style = 'text-align: center; padding: 40px; color: white;'>" +questions+ "</h1>";
+ ques.innerHTML += "<div style = 'font-size: 24px;color:white; padding: 30px; background-color: red; display: inline-block;'> <input type='radio' name='select'>" +a+ "</input> </div> ";
+ ques.innerHTML += "<div style = 'font-size: 24px;color:white; padding: 30px; background-color: blue; display: inline-block;'> <input type='radio' name='select'>" +b+ "</input> </div> ";
+ ques.innerHTML += "<div style = 'font-size: 24px;color:white; padding: 30px; background-color: green; display: inline-block;'> <input type='radio' name='select'>" +c+ "</input> </div> ";
+ ques.innerHTML += "<div style = 'font-size: 24px;color:black; padding: 30px; background-color: yellow; display: inline-block;'> <input type='radio' name='select'>" +d+ "</input> </div> ";
 }
 
-function scoreBoard()
-{
-    let scoreDisplay = getElementById("score");
-    scoreDisplay.innerHTML = "Score: "+correct+" out of "+quiz.length;
-    return scoreDisplay.innerHTML;
-}
 function check() 
 {
     var compliment = document.getElementById("message");
@@ -193,8 +192,9 @@ function check()
     }
     else
     {
-        compliment.innerHTML = "<p> Ouch! That wasn't quite it. The right answer was "+quiz[currentQuestion].correct+"</p>";
+        compliment.innerHTML = "<p style = 'color: white;'> Ouch! That wasn't quite it. The right answer was "+quiz[currentQuestion].correct+"</p>";
     }
+    score = correct/quiz.length;
     currentQuestion++;
     nextQuestion();
 }
