@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function()
         {
             let nameDis = document.getElementById('name').value;
             document.getElementById('welcome').innerHTML = 
-                    `Hello ${nameDis}!`;
+                    `<p style = 'color:white; '> Hello ${nameDis}! </p>`;
         return false;
         }
 });
@@ -18,7 +18,7 @@ var quiz =
      answer2: "String",
      answer3: "Array",
      answer4: "Class",
-     correct: "int"
+     correct: "1"
     },
     {
      id: 2,
@@ -27,7 +27,7 @@ var quiz =
      answer2: "Queue",
      answer3: "Bucket Sort",
      answer4: "ArrayList",
-     correct: "Queue"
+     correct: "2"
     },
     {
      id: 3,
@@ -36,7 +36,7 @@ var quiz =
      answer2: "O(n!)",
      answer3: "O(n^2)",
      answer4: "O(n^3)",
-     correct: "O(n^3)"
+     correct: "4"
     },
     {
      id: 4,
@@ -45,7 +45,7 @@ var quiz =
      answer2: "Change the size variable to a float",
      answer3: "Write a for loop that increments the size.",
      answer4: "Write a do while loop that increments the size.",
-     correct: "Create a new array that carries over the values from the original array."
+     correct: "1"
     },
     {
      id: 5,
@@ -54,7 +54,7 @@ var quiz =
      answer2: "Yes, you can insert values anywhere in the stack.",
      answer3: "No, stack values must be inserted before using them.",
      answer4: "Yes, only on top of the stack.",
-     correct: "Yes, only on top of the stack."
+     correct: "4"
     },
      {
      id: 6,
@@ -63,7 +63,7 @@ var quiz =
      answer2: "[64,78,42,31,30]",
      answer3: "[0,1,2,3]",
      answer4: "[900,790,361,442,102]",
-     correct: "[0,1,2,3]"
+     correct: "3"
     },
       {
      id: 7,
@@ -72,7 +72,7 @@ var quiz =
      answer2: "int = 100;",
      answer3: "int num = 100",
      answer4: "int num = 100;",
-     correct: "int num = 100;"
+     correct: "4"
     },
     {
      id: 8,
@@ -81,7 +81,7 @@ var quiz =
      answer2: "LinkedList",
      answer3: "Queues",
      answer4: "Priority Queues",
-     correct: "Queues"
+     correct: "3"
     },
     {
      id: 9,
@@ -90,7 +90,7 @@ var quiz =
      answer2: "Python",
      answer3: "Ruby",
      answer4: "C++",
-     correct: "Python"
+     correct: "2"
     },
     {
      id: 10,
@@ -99,7 +99,7 @@ var quiz =
      answer2: "push(), pop(), enqueue()",
      answer3: "enqueue(), dequeue(), clear(), pop()",
      answer4: "add(), remove(), dequeue()",
-     correct: "push(), pop(), peek(), isEmpty(), clear()"
+     correct: "1"
     },
     {
      id: 11,
@@ -108,7 +108,7 @@ var quiz =
      answer2: "throw new ArrayOutOfBoundsException();",
      answer3: "throw new Exception();",
      answer4: "throw new FileNotFoundException();",
-     correct: "throw new StackOverflowError();"
+     correct: "2"
     },
     {
      id: 12,
@@ -117,37 +117,19 @@ var quiz =
      answer2: "first names",
      answer3: "home address",
      answer4: "identification number",
-     correct: "identification number"
+     correct: "1"
  }
+    id: 13,
+     question:"What does the document.getElementById(); syntax do?", 
+     answer1: "Adds a new value into an array.",
+     answer2: "",
+     answer3: "Gets an element or an input from the html syntax that it comes from.",
+     answer4: "identification number",
+     correct: "3"
     ];
     
 var score = 0;  
-function calc()
-{
-    finalDisplay = document.getElementById("final");
-    score = (correct/quiz.legnth)*100;
-    if(score > 80)
-    {
-       finalDisplay = "Wow! You really know your stuff!";
-    }
-    else if(score < 80)
-    {
-        finalDisplay = "Not too shabby. Keep it up!";
-    }
-    else if(score < 60)
-    {
-        finalDisplay = "Could use a little review! Good try!";
-    }
-    else if(score < 40)
-    {
-        finalDisplay = "A lot more misses than hits! Better luck next time!";
-    }
-    else if(score < 20)
-    {
-        finalDisplay = "Had one too many naps in class, eh?"
-    }
-    return finalDisplay.innerHTML;
-}
+
 function test()
 {
      console.log(score);
@@ -160,8 +142,10 @@ function nextQuestion()
     ques = document.getElementById("quest");
 if(currentQuestion >= quiz.length)
 {
-   calc();
-   document.getElementById("done").innerHTML = "<p> The quiz is over. You earned a " +score+ " out of 100</p>";
+   finalDisplay = document.getElementById("final");
+    score = (correct/quiz.legnth)*100;
+   
+    document.getElementById("done").innerHTML = "<p style = 'color: white;'> The quiz is over. You earned a " +score+ " out of 100</p>";
    return false;
 }
 else
@@ -169,32 +153,36 @@ else
     document.getElementById("Title").innerHTML = "<h1 style = 'background-color: purple; padding: 40px; text-align: center;'> Question #"+(quiz[currentQuestion].id)+" of "+quiz.length;
     questions = quiz[currentQuestion].question;
  
- a = " a. "+quiz[currentQuestion].answer1;
- b = " b. "+quiz[currentQuestion].answer2;
- c = " c. "+quiz[currentQuestion].answer3;
- d = " d. "+quiz[currentQuestion].answer4;
+ a = quiz[currentQuestion].answer1;
+ b = quiz[currentQuestion].answer2;
+ c = quiz[currentQuestion].answer3;
+ d = quiz[currentQuestion].answer4;
  ques.innerHTML = "<h1 style = 'text-align: center; padding: 40px; color: white;'>" +questions+ "</h1>";
- ques.innerHTML += "<div style = 'font-size: 24px;color:white; padding: 30px; background-color: red; display: inline-block;'> <input type='radio' name='select'>" +a+ "</input> </div> ";
- ques.innerHTML += "<div style = 'font-size: 24px;color:white; padding: 30px; background-color: blue; display: inline-block;'> <input type='radio' name='select'>" +b+ "</input> </div> ";
- ques.innerHTML += "<div style = 'font-size: 24px;color:white; padding: 30px; background-color: green; display: inline-block;'> <input type='radio' name='select'>" +c+ "</input> </div> ";
- ques.innerHTML += "<div style = 'font-size: 24px;color:black; padding: 30px; background-color: yellow; display: inline-block;'> <input type='radio' name='select'>" +d+ "</input> </div> ";
+ ques.innerHTML += "<div style = 'font-size: 24px;color:white; padding: 30px; background-color: red; display: inline-block;'> <input type='radio' name='select' value = '1'>" +a+ "</input> </div> ";
+ ques.innerHTML += "<div style = 'font-size: 24px;color:white; padding: 30px; background-color: blue; display: inline-block;'> <input type='radio' name='select' value = '2'>" +b+ "</input> </div> ";
+ ques.innerHTML += "<div style = 'font-size: 24px;color:white; padding: 30px; background-color: green; display: inline-block;'> <input type='radio' name='select' value = '3'>" +c+ "</input> </div> ";
+ ques.innerHTML += "<div style = 'font-size: 24px;color:black; padding: 30px; background-color: yellow; display: inline-block;'> <input type='radio' name='select' value = '4'>" +d+ "</input> </div> ";
 }
-
+var selection;
 function check() 
 {
     var compliment = document.getElementById("message");
     select = document.getElementsByName("select");
-    
-    if(select == quiz[currentQuestion].correct.toString())
+    for(var i = 0; i < select.length; i++)
     {
-      compliment.innerHTML = "<p> Great Job! You got it right! </p>";
+        if(select[i].checked)
+           selection = select[i].value;
+    }
+    if(selection == quiz[currentQuestion].correct)
+    {
+      compliment.innerHTML = "<p style = 'color: white;'> Great Job! You got it right! </p>";
       correct+= 1;
     }
     else
     {
         compliment.innerHTML = "<p style = 'color: white;'> Ouch! That wasn't quite it. The right answer was "+quiz[currentQuestion].correct+"</p>";
     }
-    score = correct/quiz.length;
+    score = (correct/quiz.length)*100;
     currentQuestion++;
     nextQuestion();
 }
