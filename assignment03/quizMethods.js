@@ -1,3 +1,30 @@
+
+
+document.addEventListener('DOMContentLoaded',() => 
+{
+        user_interface(1)
+
+        document.querySelector("check").onclick = (e) =>
+        {
+            verify(e)
+        }
+});
+const user_interface = async (user) =>
+{
+const quiz = await fetch('https://my-json-server.typicode.com/SebC750/staticAPI/quiz');  
+ const model = await quiz.json()
+ const element = render(model, '#quest');
+ document.querySelector("#quest2").innerHTML = element;
+}
+const render = (model, view) =>
+{
+     template = document.querySelector(view).innerHTML;
+     var temp = Handlebars.compile(template);
+     var html_element = template(...model, ...)
+}
+
+
+
 document.addEventListener('DOMContentLoaded', function()
         {
         document.querySelector('#input').onsubmit = function()    
@@ -131,18 +158,7 @@ var quiz =
  }
     ]; 
     
-const user_interface = async (user) =>
-{
-const quiz = await fetch('https://my-json-server.typicode.com/SebC750/staticAPI/quiz');  
- const model = await quiz.json()
- const element = render(model, '#quest');
- document.querySelector("#quest2").innerHTML = element;
-}
-const render = (model, view) =>
-{
-     template = document.querySelector(view).innerHTML;
-     var temp = Handlebars.compile(template);
-}
+
 var score = 0;  
 
 function test()
@@ -180,6 +196,10 @@ else
  ques.innerHTML += "<div style = 'font-size: 24px;color:black; padding: 30px; background-color: yellow; display: inline-block;'> <input type='radio' name='select' value = '4'>" +d+ "</input> </div> ";
 }
 var selection;
+
+
+
+
 function check() 
 {
     var compliment = document.getElementById("message");
