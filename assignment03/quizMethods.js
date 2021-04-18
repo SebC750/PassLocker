@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function()
         return false;
         }
 });
+
 var quiz = 
 
     [
@@ -118,16 +119,30 @@ var quiz =
      answer3: "home address",
      answer4: "identification number",
      correct: "1"
- }
+ },
+ {
     id: 13,
      question:"What does the document.getElementById(); syntax do?", 
      answer1: "Adds a new value into an array.",
-     answer2: "",
-     answer3: "Gets an element or an input from the html syntax that it comes from.",
-     answer4: "identification number",
+     answer2: "Deletes a value from a stack.",
+     answer3: "Gets an element or an input from the html id tag that it comes from.",
+     answer4: "Gets an element or an input from the html class tag that it comes from.",
      correct: "3"
-    ];
+ }
+    ]; 
     
+const user_interface = async (user) =>
+{
+const quiz = await fetch('https://my-json-server.typicode.com/SebC750/staticAPI/quiz');  
+ const model = await quiz.json()
+ const element = render(model, '#quest');
+ document.querySelector("#quest2").innerHTML = element;
+}
+const render = (model, view) =>
+{
+     template = document.querySelector(view).innerHTML;
+     var temp = Handlebars.compile(template);
+}
 var score = 0;  
 
 function test()
@@ -139,7 +154,7 @@ var questions, a, b, c, d, currentQuestion = 0, correct = 0, score, test, ques, 
 function nextQuestion()
 {
     document.getElementById('score').innerHTML = "<p style = 'color:white;'> Score: "+score;
-    ques = document.getElementById("quest");
+   
 if(currentQuestion >= quiz.length)
 {
    finalDisplay = document.getElementById("final");
@@ -157,6 +172,7 @@ else
  b = quiz[currentQuestion].answer2;
  c = quiz[currentQuestion].answer3;
  d = quiz[currentQuestion].answer4;
+ ques = document.getElementById("quest");
  ques.innerHTML = "<h1 style = 'text-align: center; padding: 40px; color: white;'>" +questions+ "</h1>";
  ques.innerHTML += "<div style = 'font-size: 24px;color:white; padding: 30px; background-color: red; display: inline-block;'> <input type='radio' name='select' value = '1'>" +a+ "</input> </div> ";
  ques.innerHTML += "<div style = 'font-size: 24px;color:white; padding: 30px; background-color: blue; display: inline-block;'> <input type='radio' name='select' value = '2'>" +b+ "</input> </div> ";
