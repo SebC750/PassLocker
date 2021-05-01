@@ -15,14 +15,15 @@ document.addEventListener('DOMContentLoaded', function()
 var score = 0;
 var correct = 0;
 var index = 0;
+var model;
 async function getQuiz()
 {
 const quiz = await fetch('https://my-json-server.typicode.com/SebC750/staticAPI/quiz');
 
- const model = await quiz.json();
+ model = await quiz.json();
  update(model);
 };
-getQuiz();
+
 function update(model)
 {
      
@@ -57,8 +58,11 @@ setTimeout(function()
    document.querySelector("#message").innerHTML = '';
 }, 1000);
 };
-function check(model)
-{
+
+document.addEventListener('DOMContentLoaded', function()
+        {
+        document.querySelector('#check').onclick = function()    
+        {
     let message = document.querySelector("#message");
     select = document.getElementsByName("select");
     for(var i = 0; i < select.length; i++)
@@ -79,8 +83,8 @@ function check(model)
         index++;
         getQuiz();
         return false;
-       
-};
+       }
+});
 
 /*
 var quiz = 
