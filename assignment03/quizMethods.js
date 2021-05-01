@@ -26,8 +26,17 @@ const quiz = await fetch('https://my-json-server.typicode.com/SebC750/staticAPI/
 
 function update(model)
 {
-     
-    var display = document.querySelector("#displays");
+ document.getElementById('score').innerHTML = "<p style = 'color:white;'> Score: "+score;
+   var display = document.querySelector("#displays");
+if(index >= model.length)
+{
+   finalDisplay = document.getElementById("final");
+    score = (correct/model.legnth)*100;
+   
+    document.getElementById("done").innerHTML = "<p style = 'color: white;'> The quiz is over. You earned a " +score+ " out of 100</p>";
+   return false;
+}
+    
 
      let questions = model[index].question;
      let a = model[index].answer1;
@@ -77,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function()
              
     }
     else
-        message.innerHTML = "<br> Sorry! You got it wrong! </br>";
+        message.innerHTML = "<br style = 'padding: 20px; background-color: '> Sorry! You got it wrong! </br>";
         oneSecond();
         score = (correct/model.length)*100;
         index++;
