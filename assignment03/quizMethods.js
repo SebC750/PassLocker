@@ -1,29 +1,5 @@
 
 
-document.addEventListener('DOMContentLoaded',() => 
-{
-        user_interface(1)
-
-        document.querySelector("check").onclick = (e) =>
-        {
-            verify(e)
-        }
-});
-const user_interface = async (user) =>
-{
-const quiz = await fetch('https://my-json-server.typicode.com/SebC750/staticAPI/quiz');  
- const model = await quiz.json()
- const element = render(model, '#quest');
- document.querySelector("#quest2").innerHTML = element;
-}
-const render = (model, view) =>
-{
-     template = document.querySelector(view).innerHTML;
-     var temp = Handlebars.compile(template);
-     var html_element = template(...model, ...)
-}
-
-
 
 document.addEventListener('DOMContentLoaded', function()
         {
@@ -36,6 +12,77 @@ document.addEventListener('DOMContentLoaded', function()
         }
 });
 
+var score = 0;
+var correct = 0;
+var index = 0;
+async function getQuiz()
+{
+const quiz = await fetch('https://my-json-server.typicode.com/SebC750/staticAPI/quiz');
+
+ const model = await quiz.json();
+ update(model);
+};
+getQuiz();
+function update(model)
+{
+     
+    var display = document.querySelector("#displays");
+
+     let questions = model[index].question;
+     let a = model[index].answer1;
+     let b = model[index].answer2;
+     let c = model[index].answer3;
+     let d = model[index].answer4;
+     let num = model[index].id;
+    display.innerHTML = "<h1 style = 'color: white;'> Question #"+num+" of "+model.length+"</h1>";
+    display.innerHTML += "<h3 style = 'color: white;'>"+questions+"</h3>";
+    display.innerHTML += "<div style = 'font-size: 24px;color:white; padding: 30px; background-color: red; display: inline-block;'> <input type='radio' name='select' value = '1'>" +a+ "</input> </div>";
+    display.innerHTML += "<div style = 'font-size: 24px;color:white; padding: 30px; background-color: blue; display: inline-block;'> <input type='radio' name='select' value = '2'>" +b+ "</input> </div> ";
+    display.innerHTML += "<div style = 'font-size: 24px;color:white; padding: 30px; background-color: green; display: inline-block;'> <input type='radio' name='select' value = '3'>" +c+ "</input> </div> ";
+    display.innerHTML += "<div style = 'font-size: 24px;color:black; padding: 30px; background-color: yellow; display: inline-block;'> <input type='radio' name='select' value = '4'>" +d+ "</input> </div> ";
+     
+     /*
+    display.innerHTML = "<h1>"+questions+"</h1>"
+    display.innerHTML += "<div style = 'font-size: 24px;color:white; padding: 30px; background-color: red; display: inline-block;'> <input type='radio' name='select' value = '1'>" +a+ "</input> </div>";
+    display.innerHTML += "<div style = 'font-size: 24px;color:white; padding: 30px; background-color: blue; display: inline-block;'> <input type='radio' name='select' value = '2'>" +b+ "</input> </div> ";
+    display.innerHTML += "<div style = 'font-size: 24px;color:white; padding: 30px; background-color: green; display: inline-block;'> <input type='radio' name='select' value = '3'>" +c+ "</input> </div> ";
+    display.innerHTML += "<div style = 'font-size: 24px;color:black; padding: 30px; background-color: yellow; display: inline-block;'> <input type='radio' name='select' value = '4'>" +d+ "</input> </div> ";
+    */
+};
+var selection;
+function oneSecond()
+{
+setTimeout(function()
+{
+   document.querySelector("#message").innerHTML = '';
+}, 1000);
+};
+function check(model)
+{
+    let message = document.querySelector("#message");
+    select = document.getElementsByName("select");
+    for(var i = 0; i < select.length; i++)
+    {
+        if(select[i].checked)
+           selection = select[i].value;
+    }
+    if(selection == model[index].correct)
+    {
+             message.innerHTML = "<br> Great job! </br>";
+             correct += 1;
+             
+    }
+    else
+        message.innerHTML = "<br> Sorry! You got it wrong! </br>";
+        oneSecond();
+        score = (correct/model.length)*100;
+        index++;
+        getQuiz();
+        return false;
+       
+};
+
+/*
 var quiz = 
 
     [
@@ -222,3 +269,4 @@ function check()
     currentQuestion++;
     nextQuestion();
 }
+*/
