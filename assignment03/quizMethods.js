@@ -50,7 +50,7 @@ if(index >= model.length)
     display.innerHTML += "<div style = 'font-size: 24px;color:white; padding: 30px; background-color: blue; display: inline-block;'> <input type='radio' name='select' value = '2'>" +b+ "</input> </div> ";
     display.innerHTML += "<div style = 'font-size: 24px;color:white; padding: 30px; background-color: green; display: inline-block;'> <input type='radio' name='select' value = '3'>" +c+ "</input> </div> ";
     display.innerHTML += "<div style = 'font-size: 24px;color:black; padding: 30px; background-color: yellow; display: inline-block;'> <input type='radio' name='select' value = '4'>" +d+ "</input> </div> ";
-     
+   
      /*
     display.innerHTML = "<h1>"+questions+"</h1>"
     display.innerHTML += "<div style = 'font-size: 24px;color:white; padding: 30px; background-color: red; display: inline-block;'> <input type='radio' name='select' value = '1'>" +a+ "</input> </div>";
