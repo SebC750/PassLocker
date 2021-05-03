@@ -18,7 +18,18 @@
 	text-align: center;
 }
 #message
+{	
+	color: white;
+}
+#quiz
 {
-	
+	padding: 30px;
+	background-color: purple;
+	color: white;
+}
+#quiz2
+{
+	padding: 30px;
+	background-color: orange;
 	color: white;
 }
